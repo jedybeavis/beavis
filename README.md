@@ -1,4 +1,4 @@
-# Html Template For Work
+# Grunt Template For Work
 
 <h2>Что включено:</h2>
  <ul>
