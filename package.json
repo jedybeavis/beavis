@@ -7,6 +7,7 @@
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-jade": "^0.15.0",
     "grunt-contrib-stylus": "^0.22.0",
-    "grunt-contrib-watch": "node_modules/grunt-contrib-watch"
+    "grunt-contrib-watch": "node_modules/grunt-contrib-watch",
+    "grunt-reload-chrome": "^0.1.4"
   }
 }
