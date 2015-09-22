@@ -35,12 +35,15 @@ module.exports = function(grunt) {
 		},
 		// Compile Image Sprites
 		sprite:{
-			all: {
+			main: {
 				src: 'build/images/sprite/*.png',
+				retinaSrcFilter: ['build/images/sprite/*@2x.png'],
 				dest: 'build/images/spritesheet.png',
+				retinaDest: 'build/images/spritesheet_retina.png',
 				destCss: 'src/css/common/sprites.styl',
-				imgPath: '../build/images/spritesheet.png',
-			}
+				imgPath: '/images/spritesheet.png',
+				retinaImgPath: '/images/spritesheet_retina.png',
+			},
 		},
 		// Compile Jade
 		jade: {
@@ -58,6 +61,8 @@ module.exports = function(grunt) {
 				} ]
 			}
 		},
+
+
 		watch: {
 			options: { livereload: true, },
 			css: {
