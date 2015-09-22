@@ -15,13 +15,22 @@ module.exports = function(grunt) {
 		stylus: {
 			compile: {
 				options: {
-					'include css': false,
-					'linenos':false,
-					'paths': ['build/css/', 'src/css']
+					'compress':false,
 				},
 				files: {
 					'build/css/main.css': 'src/css/*.styl',
 				}
+			}
+		},
+		cssmin: {
+			target: {
+				files: [{
+					expand: true,
+					cwd: 'build/css',
+					src: ['main.css', '!*.min.css'],
+					dest: 'build/css',
+					ext: '.min.css'
+				}]
 			}
 		},
 		// Compile Image Sprites
@@ -43,7 +52,7 @@ module.exports = function(grunt) {
 				files: [ {
 					cwd: "src/",
 					src: "*.jade",
-					dest: "",
+					dest: "build/",
 					expand: true,
 					ext: ".html"
 				} ]
@@ -81,13 +90,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // 4. Указываем, какие задачи выполняются, когда мы вводим «grunt» в терминале
-    grunt.registerTask('default', ['concat', 'stylus', 'sprite', 'jade', 'watch']);
+    grunt.registerTask('default', ['concat', 'stylus', 'jade', 'watch']);
 
 };
-
-
-
-
-
