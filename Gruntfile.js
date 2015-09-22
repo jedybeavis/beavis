@@ -7,8 +7,8 @@ module.exports = function(grunt) {
 		concat: {
 		// 2. Настройка для объединения файлов находится тут
 			dist: {
-				src: ['source/js/*.js',],
-				dest: 'js/main.js',
+				src: ['src/js/*.js',],
+				dest: 'build/js/main.js',
 			}
 		},
 		// Compile CSS
@@ -17,20 +17,20 @@ module.exports = function(grunt) {
 				options: {
 					'include css': false,
 					'linenos':false,
-					'paths': ['css/', 'source/css']
+					'paths': ['build/css/', 'src/css']
 				},
 				files: {
-					'css/main.css': 'source/css/*.styl',
+					'build/css/main.css': 'src/css/*.styl',
 				}
 			}
 		},
 		// Compile Image Sprites
 		sprite:{
 			all: {
-				src: 'images/sprite/*.png',
-				dest: 'images/spritesheet.png',
-				destCss: 'source/css/common/sprites.styl',
-				imgPath: '../images/spritesheet.png',
+				src: 'build/images/sprite/*.png',
+				dest: 'build/images/spritesheet.png',
+				destCss: 'src/css/common/sprites.styl',
+				imgPath: '../build/images/spritesheet.png',
 			}
 		},
 		// Compile Jade
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 					pretty: true
 				},
 				files: [ {
-					cwd: "source/",
+					cwd: "src/",
 					src: "*.jade",
 					dest: "",
 					expand: true,
@@ -52,21 +52,21 @@ module.exports = function(grunt) {
 		watch: {
 			options: { livereload: true, },
 			css: {
-				files: ['source/css/*.styl', 'source/css/blocks/*.styl'],
+				files: ['src/css/*.styl', 'src/css/blocks/*.styl'],
 				tasks: ['stylus'],
 				options: {
 					spawn: false,
 				}
 			},
 			html: {
-				files: ['source/*.jade', 'source/include_tpl/*.jade'],
+				files: ['src/*.jade', 'src/include_tpl/*.jade'],
 				tasks: ['jade'],
 				options: {
 					spawn: false,
 				}
 			},
 			js: {
-				files: ['source/js/*.js', 'source/include_tpl/js/*.js'],
+				files: ['src/js/*.js', 'src/include_tpl/js/*.js'],
 				tasks: ['concat'],
 				options: {
 					spawn: false,
