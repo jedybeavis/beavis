@@ -64,38 +64,72 @@ module.exports = function(grunt) {
 			compile: {
 				options: {
 					client: false,
-					pretty: true
+					pretty: true,
 				},
 				files: [ {
 					cwd: "src/",
-					src: "*.jade",
+					src: ['*.jade', '!template.jade'],
 					dest: "build/",
 					expand: true,
 					ext: ".html"
 				} ]
 			}
 		},
+		notify : {  
+			options: {
+				enabled: true,
+				max_jshint_notifications: 5, // maximum number of notifications from jshint output
+				title: "Project Name", // defaults to the name in package.json, or will use project directory's name
+				success: true, // whether successful grunt executions should be notified automatically
+				duration: 3, // the duration of notification in seconds, for `notify-send only
+			},
+			html:{
+				options:{
+					title: "Jade Files",
+					message: "Compile Success"
+				}
+			},
+			css:{
+				options:{
+					title: "Stylus Files",
+					message: "Compile Success"
+				}
+			},
+			concat:{
+				options:{
+					title: "JS Files",
+					message: "Compile Success"
+				}
+			},
+			all_files:{
+				options:{
+					title: "All Files",
+					message: "Compile Success"
+				}
+			}
+		},
 
 
 		watch: {
+			
 			options: { livereload: true, },
 			css: {
 				files: ['src/css/*.styl', 'src/css/blocks/*.styl'],
-				tasks: ['stylus'],
+				tasks: ['stylus','notify:css'],
 				options: {
 					spawn: false,
 				}
 			},
 			html: {
 				files: ['src/*.jade', 'src/include_tpl/*.jade'],
-				tasks: ['jade'],
+				tasks: ['jade','notify:html'],
 				options: {
-					spawn: false,
+					spawn: false
 				}
 			},
 			js: {
 				files: ['src/js/*.js', 'src/include_tpl/js/*.js'],
-				tasks: ['concat'],
+				tasks: ['concat','notify:concat'],
 				options: {
 					spawn: false,
 				}
@@ -110,8 +144,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-notify');
+
 
     // 4. Указываем, какие задачи выполняются, когда мы вводим «grunt» в терминале
-    grunt.registerTask('default', ['concat', 'stylus', 'jade', 'browserSync', 'watch']);
+    grunt.registerTask('default', ['concat', 'stylus', 'jade', 'browserSync', 'notify:all_files', 'watch']);
 
 };

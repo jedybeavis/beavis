@@ -9,6 +9,7 @@
     "grunt-contrib-jade": "^0.15.0",
     "grunt-contrib-stylus": "^0.22.0",
     "grunt-contrib-watch": "node_modules/grunt-contrib-watch",
+    "grunt-notify": "^0.4.1",
     "grunt-reload-chrome": "^0.1.4"
   }
 }
