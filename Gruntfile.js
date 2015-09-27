@@ -22,15 +22,29 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		cssmin: {
-			target: {
-				files: [{
-					expand: true,
-					cwd: 'build/css',
-					src: ['main.css', '!*.min.css'],
-					dest: 'build/css',
-					ext: '.min.css'
-				}]
+		// cssmin: {
+		// 	target: {
+		// 		files: [{
+		// 			expand: true,
+		// 			cwd: 'build/css',
+		// 			src: ['main.css', '!*.min.css'],
+		// 			dest: 'build/css',
+		// 			ext: '.min.css'
+		// 		}]
+		// 	}
+		// },
+		browserSync: {
+			dev: {
+				bsFiles: {
+					src : [
+						'build/css/*.css',
+						'build/*.html'
+					]
+				},
+				options: {
+					watchTask: true,
+					server: 'build/'
+				}
 			}
 		},
 		// Compile Image Sprites
@@ -95,9 +109,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
     // 4. Указываем, какие задачи выполняются, когда мы вводим «grunt» в терминале
-    grunt.registerTask('default', ['concat', 'stylus', 'jade', 'watch']);
+    grunt.registerTask('default', ['concat', 'stylus', 'jade', 'browserSync', 'watch']);
 
 };
