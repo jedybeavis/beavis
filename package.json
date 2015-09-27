@@ -1,5 +1,5 @@
 {
-  "name": "example-project",
+  "name": "Project Name",
   "version": "0.1.0",
   "devDependencies": {
     "gm": "^1.19.0",
@@ -9,7 +9,7 @@
     "grunt-contrib-jade": "^0.15.0",
     "grunt-contrib-stylus": "^0.22.0",
     "grunt-contrib-watch": "node_modules/grunt-contrib-watch",
-    "grunt-notify": "^0.4.1",
+    "grunt-notify": "node_modules/grunt-notify",
     "grunt-reload-chrome": "^0.1.4"
   }
 }
