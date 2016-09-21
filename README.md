@@ -5,5 +5,6 @@
  <li>Stylus </li>
  <li>Jade - шаблонизатор </li>
  <li>Img Sprites - конвертирует все картинки в спрайт и выдает их код </li>
- <li>Grunt Watch - автоматически компилирует 12321312asssads</li>
+ <li>Grunt Watch - автоматически компилирует </li>
 </ul>
+dadasdadadas
