@@ -7,4 +7,3 @@
  <li>Img Sprites - конвертирует все картинки в спрайт и выдает их код </li>
  <li>Grunt Watch - автоматически компилирует </li>
 </ul>
-dadasdadadas
